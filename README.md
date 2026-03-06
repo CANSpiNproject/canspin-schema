@@ -10,11 +10,11 @@ There are two schemas:
 
 For each of the schemas, an ODD file is provided and an RNG file. The latter can be linked to from the XML-TEI files to validate them:
 
-'''
+``` 
 <?xml-model href="https://raw.githubusercontent.com/CANSpiNproject/canspin-schema/refs/heads/main/tei_canspin_texts.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="https://raw.githubusercontent.com/CANSpiNproject/canspin-schema/refs/heads/main/tei_canspin_texts.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
-'''
+``` 
 
 The first link is for checking the XML elements and attributes, the second link to check for additional rules in schematron.
 
