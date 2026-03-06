@@ -1,4 +1,4 @@
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -77,7 +77,20 @@
         <moduleRef key="tei"/>
         
         
-      <moduleRef key="namesdates" include="country settlement"/></schemaSpec>
+      <moduleRef key="namesdates" include="country settlement"/>
+      
+        <elementSpec ident="term" module="core" mode="change">
+          <constraintSpec ident="CANSpiN.term" scheme="schematron">
+            <constraint>
+              <sch:rule context="tei:term[@type='reference-year']">
+                <sch:assert test="matches(.,'^\d{4}$')">Reference-year should be a number with 4
+                  digits.</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
+        </elementSpec>
+        
+      </schemaSpec>
     </body>
   </text>
 </TEI>
