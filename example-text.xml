@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <!-- Dies ist ein Beispiel für die Codierung eines einzelnen Textes für ein CANSpiN-Teilkorpus. -->
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Titel des Werks</title>
+                <author ref="personenregister.xml#P1">Musterautorin, Maria</author>
+                <respStmt>
+                    <name>Max Mustereditor</name>
+                    <resp>Editor</resp>
+                </respStmt>
+                <respStmt>
+                    <name>Max Mustereditor</name>
+                    <resp>Editor</resp>
+                </respStmt>
+            </titleStmt>
+            <extent>
+                <!-- einfachste Variante: Textinhalt vom text-body, bei Leerzeichen getrennt. Dafür müssen 
+            wir noch ein Skript schreiben -->
+                <measure unit="words">1200</measure>
+            </extent>
+            <publicationStmt>
+                <distributor>CANSpiN project</distributor>
+                <!-- Datum der Publikation erst setzen, wenn Dateien tatsächlich publiziert werden -->
+                <date when="2023">2023</date>
+                <pubPlace>Rostock</pubPlace>
+                <idno>CANSpiN-deu-20-001</idno>
+                <!-- projektinterne IDs nach diesem Muster -->
+                <!-- availability: wenn offene Lizenz, dann CC-BY 4.0,
+            wenn Copyright: restricted, for research use only -->
+                <availability>
+                    <licence target="https://creativecommons.org/licenses/by/4.0/">CC-BY
+                        4.0</licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <!-- Quellen angeben: 
+                1. digitale Quelle (z.B. anderes Korpus, oder epub),
+                2. Print-Quelle (was war Druckvorlage für die digitale Quelle? wenn nicht 
+                bekannt, dann "unknown" eintragen),
+                3. Erstausgabe -->
+                <bibl type="digital"><!-- bzw. type="print", type="first" -->
+                    <author>Musterautorin, Maria</author>
+                    <title>Titel des Werks</title>
+                    <pubPlace>
+                        <country ref="#link-zu-normdatensatz"/>
+                        <settlement ref="#link-zu-normdatensatz"/>
+                    </pubPlace>
+                    <!-- Für den Publikationsort erfassen wir genau: Land und Stadt/Ort -->
+                    <publisher>Muster-Verlag</publisher>
+                    <date when="1932">1932</date>
+                    <ref target="https://example.com/texts/titel_des_werks">Online-Version der
+                        Ausgabe</ref>
+                    <!-- Den Link braucht es natürlich nur, wenn es um eine digitale Ausgabe geht. Wenn für eine 
+                solche bestimmte Angaben fehlen, die eine Druckpublikation hat (z.B. Ort), können die oben
+                auch weggelassen werden: die Felder also an die Art der Publikation anpassen -->
+                </bibl>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <langUsage>
+                <!-- wir geben nur die Hauptsprache des Textes an -->
+                <language ident="deu"/>
+                <!-- oder spa -->
+            </langUsage>
+            <textClass>
+                <keywords>
+                    <term type="genre">novel</term>
+                    <!-- reference year: was wir für die Analyse als entscheidendes Jahr ansehen:
+                    das kann der Erstpublikation entsprechen, oder, wenn ein Text z.B. posthum erschienen ist
+                    und viel früher verfasst wurde, kann es dem Jahr der Entstehung entsprechen -->
+                    <term type="reference-year">1850</term>
+                </keywords>
+            </textClass>
+        </profileDesc>
+        <revisionDesc>
+            <!-- hier erster Eintrag, wenn die Datei zuerst angelegt wird
+        danach Änderungen hier immer dokumentieren -->
+            <change when="2023-12-06">Und dies die zweite. Es wurde viel verändert.</change>
+            <change when="2023-12-01">Dies ist die erste Version.</change>
+        </revisionDesc>
+    </teiHeader>
+    <!-- Hier wird nur die Grundstruktur des Haupttextes angedeutet: -->
+    <text xml:lang="deu">
+        <body>
+            <div type="part">
+                <head>Teil I</head>
+                <div type="chapter">
+                    <head>Kapitelüberschrift</head>
+                    <pb/>
+                    <!-- Seitenumbrüche nur einfügen, falls die Information vorhanden ist -->
+                    <p>Lorem <hi>ipsum</hi>...</p>
+                    <!-- Verse mit <l> -->
+                    <l>Verszeile</l>
+                    <!-- Hinweise aus dem ELTEC-Schema:
+                "The <p> element is used for everything which is typeset as a separate block 
+                on the page, including both paragraphs and list items; 
+                the <l >element is used for verse lines or similar, 
+                typically set off from the rest of the text. 
+                Illustrations and any associated text such as a title or heading are excluded. 
+                Passages set as if in drama are not specially treated. -->
+                </div>
+            </div>
+        </body>
+    </text>
+</TEI>

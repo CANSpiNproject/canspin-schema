@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://raw.githubusercontent.com/CANSpiNproject/canspin-schema/refs/heads/main/tei_canspin_authors.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://raw.githubusercontent.com/CANSpiNproject/canspin-schema/refs/heads/main/tei_canspin_authors.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>List of authors for the corpus CANSpiN-xxx-xx
+          <!-- put the name of the subcorpus here, e.g. lat-19 or deu-20 --></title>
+      </titleStmt>
+      <publicationStmt>
+        <distributor>CANSpiN project</distributor>
+        <!-- set the publication date when the data is published -->
+        <date when="2023">2023</date>
+        <pubPlace>Rostock</pubPlace>
+        <availability>
+          <licence target="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</licence>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>born digital</p>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc>
+      <!-- Changes to the list of authors must only be entered in detail after publication. -->
+      <change when="2023-07-23">Created first template for list of authors in TEI.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <!-- This is an example of how an author list is coded for a subcorpus
+          in the CANSpiN project. We create a separate author list for each subcorpus. -->
+      <listPerson>
+        <person xml:id="P1">
+          <persName type="main">
+            <!-- Multiple first name and last name elements are possible (if necessary). -->
+            <forename>Antonia</forename>
+            <surname>Musterfrau</surname>
+            <!-- If someone always publishes under abbreviated first names and is known by them,
+              the abbreviations can also remain in the forum name (we do not necessarily have 
+              to resolve them). -->
+          </persName>
+          <!-- Different names for one person can be encoded using multiple <persName> elements, 
+            as shown below. This allows pseudonyms or nicknames to be recorded, if relevant 
+            and useful (this is not mandatory). -->
+          <persName type="other">
+            <addName type="pseudonym"/>
+            <addName type="nickname"/>
+          </persName>
+          <!-- The following short form of the project name is intended to help provide a compact
+            name for evaluations that can be easily displayed in visualizations, for example. -->
+          <persName type="short">MusterfrauA</persName>
+          <idno type="VIAF">34463780</idno>
+          <!-- Enter the VIAF number here as a preference, if not available, GND, Wikidata, 
+            or other standard number. -->
+          <!-- Nationality and residence: We differentiate at the country level and for the 
+            period of divided Germany, GDR (DDR) vs. FRG (BRD). -->
+          <nationality><!-- date if necessary -->German</nationality>
+          <!-- Dating is generally possible using the following attributes:
+            @when (= exact date)
+            @from and @to (= time period)
+            @notBefore or @notAfter (for less precise information)
+            Dating can always be specified by year (e.g., 1900), month (e.g., 1900-11), 
+            or day (e.g., 1900-11-06).  -->
+          <residence from="1900" to="1940"
+            ><!-- Country (long-term stays, min. 2 years) --></residence>
+          <residence from="1940" to="1960"
+            ><!-- Country (long-term stays, min. 2 years) --></residence>
+          <birth>
+            <date when="1980-11-13"
+              >13.11.1980<!-- if unknown: unknown, as far as known to the day --></date>
+            <country ref="#link-zu-normdatensatz"/>
+            <region ref="#link-zu-normdatensatz">
+              <!-- If applicable, if region is important,  @ref only if available, otherwise
+                delete this element. --></region>
+            <!-- settlement is the city/town -->
+            <settlement ref="#link-zu-normdatensatz"/>
+          </birth>
+          <death>
+            <!-- treat the following elements exactly as with <birth> -->
+            <date/>
+            <country ref="#link-zu-normdatensatz"><!-- local names for place names --></country>
+            <region ref="#link-zu-normdatensatz"><!-- if necessary, if important, 
+              ref only if available --></region>
+            <settlement ref="#link-zu-normdatensatz"/>
+          </death>
+          <!-- sex: possible values: female, male, unknown, other -->
+          <sex>female</sex>
+        </person>
+      </listPerson>
+    </body>
+  </text>
+</TEI>

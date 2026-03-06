@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-03-06T11:18:39Z. . 
+Schema generated from ODD source 2026-03-06T11:32:34Z. . 
 TEI Edition: P5 Version 4.11.0. Last updated on 18th February 2026, revision 358d2e48e 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.11.0/ 
   
@@ -1571,22 +1571,28 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
    <define name="tei_model.placeNamePart">
       <choice>
          <ref name="tei_country"/>
+         <ref name="tei_region"/>
          <ref name="tei_settlement"/>
       </choice>
    </define>
    <define name="tei_model.placeNamePart_alternation">
       <choice>
          <ref name="tei_country"/>
+         <ref name="tei_region"/>
          <ref name="tei_settlement"/>
       </choice>
    </define>
    <define name="tei_model.placeNamePart_sequence">
       <ref name="tei_country"/>
+      <ref name="tei_region"/>
       <ref name="tei_settlement"/>
    </define>
    <define name="tei_model.placeNamePart_sequenceOptional">
       <optional>
          <ref name="tei_country"/>
+      </optional>
+      <optional>
+         <ref name="tei_region"/>
       </optional>
       <optional>
          <ref name="tei_settlement"/>
@@ -1597,12 +1603,18 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
          <ref name="tei_country"/>
       </zeroOrMore>
       <zeroOrMore>
+         <ref name="tei_region"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="tei_settlement"/>
       </zeroOrMore>
    </define>
    <define name="tei_model.placeNamePart_sequenceRepeatable">
       <oneOrMore>
          <ref name="tei_country"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_region"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_settlement"/>
@@ -2652,17 +2664,23 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       <choice>
          <ref name="tei_surname"/>
          <ref name="tei_forename"/>
+         <ref name="tei_nameLink"/>
+         <ref name="tei_addName"/>
       </choice>
    </define>
    <define name="tei_model.persNamePart_alternation">
       <choice>
          <ref name="tei_surname"/>
          <ref name="tei_forename"/>
+         <ref name="tei_nameLink"/>
+         <ref name="tei_addName"/>
       </choice>
    </define>
    <define name="tei_model.persNamePart_sequence">
       <ref name="tei_surname"/>
       <ref name="tei_forename"/>
+      <ref name="tei_nameLink"/>
+      <ref name="tei_addName"/>
    </define>
    <define name="tei_model.persNamePart_sequenceOptional">
       <optional>
@@ -2670,6 +2688,12 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       </optional>
       <optional>
          <ref name="tei_forename"/>
+      </optional>
+      <optional>
+         <ref name="tei_nameLink"/>
+      </optional>
+      <optional>
+         <ref name="tei_addName"/>
       </optional>
    </define>
    <define name="tei_model.persNamePart_sequenceOptionalRepeatable">
@@ -2679,6 +2703,12 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       <zeroOrMore>
          <ref name="tei_forename"/>
       </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tei_nameLink"/>
+      </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tei_addName"/>
+      </zeroOrMore>
    </define>
    <define name="tei_model.persNamePart_sequenceRepeatable">
       <oneOrMore>
@@ -2686,6 +2716,12 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_forename"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_nameLink"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_addName"/>
       </oneOrMore>
    </define>
    <define name="tei_att.datable.iso.attributes">
@@ -2830,9 +2866,42 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          <empty/>
       </element>
    </define>
+   <define name="tei_nameLink">
+      <element name="nameLink">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(name link) contains a connecting phrase or link used within a name but not regarded as part of it, such as van der or of. [14.2.1. Personal Names]</a:documentation>
+         <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.cmc.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_addName">
+      <element name="addName">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(additional name) contains an additional name component, such as a nickname, epithet, or alias, or any other descriptive phrase used within a personal name. [14.2.1. Personal Names]</a:documentation>
+         <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.cmc.attributes"/>
+         <ref name="tei_att.personal.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_country">
       <element name="country">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(country) contains the name of a geo-political unit, such as a nation, country, colony, or commonwealth, larger than or administratively superior to a region and smaller than a bloc. [14.2.3. Place Names]</a:documentation>
+         <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.cmc.attributes"/>
+         <ref name="tei_att.datable.attributes"/>
+         <ref name="tei_att.naming.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_region">
+      <element name="region">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(region) contains the name of an administrative unit such as a state, province, or county, larger than a settlement, but smaller than a country. [14.2.3. Place Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.cmc.attributes"/>
