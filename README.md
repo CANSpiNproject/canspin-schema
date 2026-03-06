@@ -1,4 +1,5 @@
 ![version](https://img.shields.io/badge/version-1.0.0-blue)
+[![DOI](https://zenodo.org/badge/1173464590.svg)](https://doi.org/10.5281/zenodo.18889102)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 # canspin-schema
